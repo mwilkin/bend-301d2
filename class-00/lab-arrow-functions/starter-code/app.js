@@ -7,7 +7,7 @@ const theOldWay = function(course) {
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log('The old way:', theOldWay('Code 301'));
+console.log('The old way:', theOldWay('Code 301'));
 
 
 // STEP 2
@@ -107,43 +107,53 @@ const newObject = array => ({
 // Write your solutions on a single line wherever possible.
 
 
+// let sum = function(a, b, c, d) {
+//   return a + b + c + d;
+// };
 
-let sum = function(a, b, c, d) {
-  return a + b + c + d;
-};
-
-// TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(sum(1, 2, 3, 4));
-
-
-let objectLit = function() {
-  return {
-    key1: 'value1',
-    key2: 'value2',
-    key3: 'value3',
-  };
-};
+let sum = (a, b, c, d) => a + b + c + d;
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(objectLit());
+console.log(sum(1, 2, 3, 4));
 
 
-let sumAndProduct = function(a, b) {
-  let sum = a + b;
-  let product = a * b;
-  return [sum, product];
-};
+// let objectLit = function() {
+//   return {
+//     key1: 'value1',
+//     key2: 'value2',
+//     key3: 'value3',
+//   };
+// };
+
+let objectLit = () => ({
+  key1: 'value1',
+  key2: 'value2',
+  key3: 'value3',
+});
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(sumAndProduct(3, 9));
+console.log(objectLit());
 
 
-let message = function(name) {
-  return `Hello, ${name}!`;
-};
+// let sumAndProduct = function(a, b) {
+//   let sum = a + b;
+//   let product = a * b;
+//   return [sum, product];
+// };
+
+let sumAndProduct = (a, b) => {return [a + b, a * b]};
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(message('Allie'));
+console.log(sumAndProduct(3, 9));
+
+
+// let message = function(name) {
+//   return `Hello, ${name}!`;
+// };
+
+let message = name => `Hello, ${name}!`;
+// TODO: Uncomment the following line of code to see the output in the browser console
+console.log(message('Allie'));
 
 
 let Student = function(name, age, hometown) {
@@ -152,28 +162,31 @@ let Student = function(name, age, hometown) {
   this.hometown = hometown;
 };
 
-let joe = new Student('Joe', 'Schmoe', 100);
+// let Student = (name, age, hometown) => {
+//   this.name = name;
+//   this.age = age;
+//   this.hometown = hometown;
+// };
+
+
+let joe = new Student ('Joe', 'Schmoe', 100);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this code to break!
-// console.log(joe);
+console.log(joe);
 
 
-Student.prototype.greeting = function() {
-  return `Hi, my name is ${this.name}`;
-};
+Student.prototype.greeting = () => `Hi, my name is ${joe.name}`;
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this method to break!
-// console.log(joe.greeting());
+console.log(joe.greeting());
 
 
-Student.courseName = function() {
-  return 'This student is enrolled in Code 301.';
-};
+Student.courseName = () => 'This student is enrolled in Code 301.';
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(Student.courseName());
+console.log(Student.courseName());
 
 
 
@@ -184,17 +197,17 @@ Student.prototype.scope = function() {
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(joe.scope());
+console.log(joe.scope());
 
 Student.prototype.scopeArrow = () => console.log(this);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(joe.scopeArrow());
+console.log(joe.scopeArrow());
 
 // TODO: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
-//
+//    "This" refers to the Student object
 // 2. What is "this" when joe.scopeArrow() is invoked?
-//
+//    "This" refers to the window object.
 // 3. Explain why "this" is different when an arrow function is used.
-//
+//    Arrow functions don't have their own this. If this is not defined or present in the current scope, "this" is found from its enclosing scope.
